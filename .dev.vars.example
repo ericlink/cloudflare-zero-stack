@@ -1,0 +1,8 @@
+# Copy to .dev.vars for local development (wrangler loads this automatically).
+# Never commit real secrets.
+
+# Optional — if missing, feedback still saves; email is skipped with a warning.
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# Override the default from wrangler.toml [vars] if you want
+# NOTIFY_EMAIL=notify@example.com

@@ -1,0 +1,25 @@
+{
+  "name": "feedback-wall",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Indie-hacker Feedback Wall — Cloudflare Workers + D1 + Resend (text-only; R2 skipped)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply feedback-wall-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply feedback-wall-db --remote",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+  },
+  "dependencies": {
+    "hono": "^4.7.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260926.1",
+    "typescript": "^5.8.2",
+    "wrangler": "^4.4.0"
+  }
+}

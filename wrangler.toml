@@ -1,0 +1,23 @@
+name = "feedback-wall"
+main = "src/index.ts"
+compatibility_date = "2025-03-01"
+
+# Static frontend (HTML/CSS/JS) served from /public
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# Non-secret config (override per env if needed)
+[vars]
+NOTIFY_EMAIL = "eric.m.link@gmail.com"
+
+# D1 SQLite database
+[[d1_databases]]
+binding = "DB"
+database_name = "feedback-wall-db"
+database_id = "a45ad531-9aa7-48c0-bfd5-d03b7b03ec44"
+migrations_dir = "migrations"
+
+# Secrets (set via `wrangler secret put RESEND_API_KEY`, or .dev.vars locally):
+# - RESEND_API_KEY
+# R2 / image uploads skipped for now (no [[r2_buckets]] binding).

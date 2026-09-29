@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Feedback Wall</title>
+    <meta
+      name="description"
+      content="Leave a note — a tiny text feedback wall on Cloudflare Workers + D1."
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="bg-glow" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">◇</span>
+        <div>
+          <h1>Feedback Wall</h1>
+          <p class="tagline">Say something nice — or useful.</p>
+        </div>
+      </div>
+      <a class="ghost-link" href="#compose">Leave feedback</a>
+    </header>
+
+    <main>
+      <section id="compose" class="card compose">
+        <h2>Leave a note</h2>
+        <form id="feedback-form" enctype="multipart/form-data" novalidate>
+          <label class="field">
+            <span>Name <em>*</em></span>
+            <input
+              type="text"
+              name="name"
+              maxlength="80"
+              required
+              autocomplete="name"
+              placeholder="Ada Lovelace"
+            />
+          </label>
+
+          <label class="field">
+            <span>Message <em>*</em></span>
+            <textarea
+              name="message"
+              rows="4"
+              maxlength="1000"
+              required
+              placeholder="What's working? What should change?"
+            ></textarea>
+            <span class="hint"><span id="char-count">0</span> / 1000</span>
+          </label>
+
+          <div class="form-actions">
+            <p id="form-status" class="status" role="status" aria-live="polite"></p>
+            <button type="submit" id="submit-btn">
+              <span class="btn-label">Post feedback</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="feed">
+        <div class="feed-header">
+          <h2>Recent</h2>
+          <button type="button" class="text-btn" id="refresh-btn">Refresh</button>
+        </div>
+        <div id="feed-list" class="feed-list" aria-live="polite">
+          <p class="empty">Loading…</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Built on Cloudflare Workers · D1 · Resend —
+        <span class="muted">indie-hacker stack sample (text-only for now)</span>
+      </p>
+    </footer>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
